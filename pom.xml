@@ -20,6 +20,11 @@
             <version>4.0.0</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jtwig</groupId>
+            <artifactId>jtwig-core</artifactId>
+            <version>5.86.1.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>

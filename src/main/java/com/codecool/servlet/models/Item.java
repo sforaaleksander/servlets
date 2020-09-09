@@ -1,12 +1,13 @@
 package com.codecool.servlet.models;
 
 public class Item {
+    private static int idCount;
     private int id;
     private String name;
     private double price;
 
-    public Item(int id, String name, double price) {
-        this.id = id;
+    public Item(String name, double price) {
+        this.id = idCount++;
         this.name = name;
         this.price = price;
     }

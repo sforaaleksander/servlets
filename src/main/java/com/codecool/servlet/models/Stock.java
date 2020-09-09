@@ -10,6 +10,10 @@ public class Stock {
         itemSet = new HashSet<>();
     }
 
+    public void addToStock(Item item) {
+        itemSet.add(item);
+    }
+
     public Set<Item> getItemSet() {
         return itemSet;
     }
