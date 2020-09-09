@@ -14,13 +14,13 @@ public class AnotherServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
 
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder builder = new StringBuilder();
         for (int i = 0; i < 10; i++) {
-            buffer.append("<div>");
-            buffer.append("<a href=\"/another?link_id=" + i + "\">");
-            buffer.append("Hello " + i + ". link:");
-            buffer.append("</a>");
-            buffer.append("</div>");
+            builder.append("<div>");
+            builder.append("<a href=\"/another?link_id=").append(i).append("\">");
+            builder.append("Hello ").append(i).append(". link:");
+            builder.append("</a>");
+            builder.append("</div>");
         }
 
         String linkId = request.getParameter("link_id");
@@ -34,7 +34,7 @@ public class AnotherServlet extends HttpServlet {
                                 "<h3>No link was pressed</h3>" :
                                 "<h3>Link " + linkId + " was pressed!</h3>") +
                         "<br/>" +
-                        "<div>" + buffer.toString() + "</div>" +
+                        "<div>" + builder.toString() + "</div>" +
                         "</body></html>"
         );
     }
