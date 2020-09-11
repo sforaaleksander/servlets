@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Shop</title>
-    <link rel="stylesheet" type="text/css" href="shop.css">
 </head>
 <body>
-WELCOME TO THE SHOP
+<h1>WELCOME TO THE SHOP</h1>
+
+<div class="stock">
 
 {% for item in stock %}
-    <div>
-        <span> {{ item.name }} </span> | <span> {{ item.price }} </span>
+    <div class="item">
+{#        <div class="item-name"> {{ item.name }} </div> <div class="item-price"> {{ item.price }} </div>#}
+        <div> {{ item.name }} {{ item.price }} <form method="post" action="shop"><input type="hidden" name="id" value={{ item.id }}/><button type="submit">ADD TO CART</button></form></div>
     </div>
 {% endfor %}
+</div>
+<a href="/cart">SHOW CART</a>
 
 </body>
 

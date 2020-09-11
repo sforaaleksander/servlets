@@ -17,4 +17,8 @@ public class Stock {
     public Set<Item> getItemSet() {
         return itemSet;
     }
+
+    public Item getItemById(int id) {
+        return itemSet.stream().filter(e -> e.getId() == id).findFirst().orElse(null);
+    }
 }

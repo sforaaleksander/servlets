@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Shop - cart</title>
+</head>
+<body>
+<h1>YOUR CART</h1>
+
+<div class="stock">
+
+    {% for item in cart %}
+        <div class="item">
+            {#        <div class="item-name"> {{ item.name }} </div> <div class="item-price"> {{ item.price }} </div>#}
+            <div> {{ item.name }} {{ item.price }} <form method="post" action="cart"><input type="hidden" name="id" value={{ item.id }}/><button type="submit">REMOVE FROM CART</button></form></div>
+        </div>
+    {% endfor %}
+    Total price: {{ totalPrice }}
+</div>
+<a href="/shop">BACK TO SHOP</a>
+
+</body>
+
+</html>

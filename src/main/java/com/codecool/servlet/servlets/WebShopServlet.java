@@ -1,5 +1,6 @@
 package com.codecool.servlet.servlets;
 
+import com.codecool.servlet.models.Cart;
 import com.codecool.servlet.models.Item;
 import com.codecool.servlet.models.Stock;
 import org.jtwig.JtwigModel;
@@ -16,20 +17,17 @@ import java.util.List;
 
 @WebServlet(urlPatterns = {"/shop"})
 public class WebShopServlet extends HttpServlet {
-    private Stock stock;
+    static Stock stock;
 
     public WebShopServlet() {
         initializeStock();
     }
 
     private void initializeStock() {
-        Item book1 = new Item("Ulisses", 200.0);
-        Item book2 = new Item("The Phenomenology of Spirit", 350.0);
-        Item book3 = new Item("Idiot", 180.0);
         stock = new Stock();
-        stock.addToStock(book1);
-        stock.addToStock(book2);
-        stock.addToStock(book3);
+        stock.addToStock(new Item("Ulisses", 200.0));
+        stock.addToStock(new Item("The Phenomenology of Spirit", 350.0));
+        stock.addToStock(new Item("Idiot", 180.0));
     }
 
     @Override
@@ -37,10 +35,16 @@ public class WebShopServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/shop.twig");
         JtwigModel model = JtwigModel.newModel();
-
         model.with("stock", stock.getItemSet());
         String message = template.render(model);
-        String test = "welcome to web shop";
         out.println(message);
+    }
+
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int itemId = Integer.parseInt(request.getParameterMap().get("id")[0].replace("/", ""));
+        System.out.println("item id: "+itemId);
+        ShoppingCartServlet.cart.addItem(stock.getItemById(itemId));
+        doGet(request, response);
     }
 }
