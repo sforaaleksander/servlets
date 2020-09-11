@@ -1,6 +1,5 @@
 package com.codecool.servlet.servlets;
 
-import com.codecool.servlet.models.Cart;
 import com.codecool.servlet.models.Item;
 import com.codecool.servlet.models.Stock;
 import org.jtwig.JtwigModel;
@@ -12,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet(urlPatterns = {"/shop"})
 public class WebShopServlet extends HttpServlet {

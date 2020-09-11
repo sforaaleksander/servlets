@@ -7,18 +7,15 @@
 </head>
 <body>
 <h1>WELCOME TO THE SHOP</h1>
-
 <div class="stock">
 
 {% for item in stock %}
     <div class="item">
-{#        <div class="item-name"> {{ item.name }} </div> <div class="item-price"> {{ item.price }} </div>#}
         <div> {{ item.name }} {{ item.price }} <form method="post" action="shop"><input type="hidden" name="id" value={{ item.id }}/><button type="submit">ADD TO CART</button></form></div>
     </div>
 {% endfor %}
+
 </div>
 <a href="/cart">SHOW CART</a>
-
 </body>
-
 </html>

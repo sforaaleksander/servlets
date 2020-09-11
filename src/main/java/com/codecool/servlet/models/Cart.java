@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
-    private List<Item> itemList;
+    private final List<Item> itemList;
 
     public Cart() {
         itemList = new ArrayList<>();
